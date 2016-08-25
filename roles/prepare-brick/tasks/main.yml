@@ -1,0 +1,37 @@
+---
+- name: Create physical device
+  shell: pvcreate /dev/{{ item }}
+  with_items: "{{ device }}"
+  ignore_errors: True
+
+- name: Create volume group
+  shell: vgcreate vg{{ item }} /dev/{{ item }}
+  with_items: "{{ device }}"
+  ignore_errors: True
+
+- name: Create thin pool
+  shell: lvcreate -L 950M -T vg{{ item }}/thinpool
+  with_items: "{{ device }}"
+  ignore_errors: True
+
+- name: Create thin volume
+  shell: lvcreate -V900M -T vg{{ item }}/thinpool -n thinp1
+  with_items: "{{ device }}"
+  ignore_errors: True
+
+- name: Format backend
+  filesystem: fstype=xfs dev=/dev/vg{{ item }}/thinp1
+  with_items: "{{ device }}"
+  ignore_errors: True
+
+- name: Create mount directory
+  file: path=/bricks/br{{ item }} state=directory recurse=yes
+  with_items: "{{ device }}"
+  ignore_errors: True
+
+- name: Add entry to fstab and mount
+  mount: name=/bricks/br{{ item }} src=/dev/vg{{ item }}/thinp1 fstype=xfs state=mounted
+  with_items: "{{ device }}"
+  ignore_errors: True
+
+

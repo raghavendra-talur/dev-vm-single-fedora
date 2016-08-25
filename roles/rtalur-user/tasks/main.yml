@@ -1,0 +1,11 @@
+---
+- name: Add rtalur user;
+  user: name=rtalur state=present createhome=yes skeleton=/etc/skel shell=/bin/bash groups=wheel append=yes
+
+- name: Allow rtalur to have passwordless sudo
+  lineinfile:
+    dest: /etc/sudoers
+    state: present
+    regexp: '^rtalur'
+    line: 'rtalur ALL=(ALL) NOPASSWD: ALL'
+

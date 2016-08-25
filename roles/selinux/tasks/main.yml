@@ -1,0 +1,10 @@
+---
+- name: Allow gfapi in Samba to bind to other ports than well known smb ports
+  seboolean: name=samba_load_libgfapi state=yes persistent=yes
+
+- name: turn off selinux for this boot
+  shell: setenforce 0
+
+- name: turn off selinux from next boot
+  selinux: state=disabled
+

@@ -1,0 +1,9 @@
+---
+- name: add ssh keys to authorized_keys file;
+  authorized_key: user=rtalur key={{ lookup('file', '/home/rtalur/.ssh/id_rsa.pub') }}
+
+- name: add ssh keys to authorized_keys file;
+  authorized_key: user=vagrant key={{ lookup('file', '/home/rtalur/.ssh/id_rsa.pub') }}
+
+- name: add ssh keys to authorized_keys file;
+  authorized_key: user=root key={{ lookup('file', '/home/rtalur/.ssh/id_rsa.pub') }}

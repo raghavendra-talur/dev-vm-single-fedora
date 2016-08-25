@@ -1,0 +1,15 @@
+---
+- hosts: all
+  become: true
+  roles:
+    - install-pkgs
+    - remove-pkgs
+    - prepare-brick
+    - mock-user
+    - rtalur-user
+    - selinux
+    - iptables
+    - fix-localhost
+    - daemon-services
+    - copy-files
+    - authorized-keys

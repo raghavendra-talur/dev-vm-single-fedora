@@ -1,0 +1,6 @@
+---
+- name: copy bashrc file;
+  copy: src=/home/rtalur/.bashrc dest=/home/rtalur/.bashrc owner=rtalur group=rtalur mode=644 backup=yes
+
+- name: copy gdbinit file;
+  copy: src=/home/rtalur/.gdbinit dest=/home/rtalur/.gdbinit owner=rtalur group=rtalur mode=644 backup=yes

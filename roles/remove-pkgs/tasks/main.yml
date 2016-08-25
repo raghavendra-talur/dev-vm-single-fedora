@@ -1,0 +1,46 @@
+---
+- name: Uninstall gluster packages and samba packages
+  dnf: name={{ item }} state=absent
+  with_items:
+    -  samba-client
+    -  samba-client-libs
+    -  samba-common
+    -  samba-common-libs
+    -  samba-common-tools
+    -  samba-dc
+    -  samba-dc-libs
+    -  samba-devel
+    -  samba-krb5-printing
+    -  samba-libs
+    -  samba-pidl
+    -  samba-python
+    -  samba-test
+    -  samba-test-libs
+    -  samba-vfs-cephfs
+    -  samba-vfs-glusterfs
+    -  samba-winbind
+    -  samba-winbind-clients
+    -  samba-winbind-krb5-locator
+    -  samba-winbind-modules
+    -  ctdb
+    -  ctdb-tests
+    -  libsmbclient
+    -  libsmbclient-devel
+    -  libwbclient
+    -  libwbclient-devel
+    -  glusterfs-api
+    -  glusterfs-api-devel
+    -  glusterfs-cli
+    -  glusterfs-client-xlators
+    -  glusterfs-devel
+    -  glusterfs-extra-xlators
+    -  glusterfs-fuse
+    -  glusterfs-ganesha
+    -  glusterfs-geo-replication
+    -  glusterfs-libs
+    -  glusterfs-rdma
+    -  glusterfs-regression-tests
+    -  glusterfs-resource-agents
+    -  glusterfs-server
+    -  python-gluster
+
