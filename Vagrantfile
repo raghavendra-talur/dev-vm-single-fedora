@@ -24,7 +24,7 @@ Vagrant.configure("2") do |config|
       # Define basic config for VM, memory, cpu, storage pool
       testvm.vm.provider "libvirt" do |lv,override|
         lv.storage_pool_name = "default"
-        lv.memory = 4096
+        lv.memory = 2048
         lv.cpus = 2
         lv.default_prefix = ''
 

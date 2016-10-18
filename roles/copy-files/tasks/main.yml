@@ -4,3 +4,9 @@
 
 - name: copy gdbinit file;
   copy: src=/home/rtalur/.gdbinit dest=/home/rtalur/.gdbinit owner=rtalur group=rtalur mode=644 backup=yes
+
+- name: create samba dir if not existing;
+  file: path=/etc/samba state=directory recurse=yes
+
+- name: copy smb.conf;
+  copy: src=smb.conf dest=/etc/samba/smb.conf owner=root group=root mode=644 backup=yes
